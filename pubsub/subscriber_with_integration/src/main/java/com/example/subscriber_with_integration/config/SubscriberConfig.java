@@ -6,9 +6,6 @@ import com.google.cloud.spring.pubsub.core.PubSubTemplate;
 import com.google.cloud.spring.pubsub.integration.AckMode;
 import com.google.cloud.spring.pubsub.integration.inbound.PubSubInboundChannelAdapter;
 import com.google.cloud.spring.pubsub.support.converter.JacksonPubSubMessageConverter;
-import com.google.cloud.spring.pubsub.support.converter.PubSubMessageConverter;
-import com.google.pubsub.v1.PubsubMessage;
-import java.util.Map;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.channel.DirectChannel;
@@ -21,7 +18,7 @@ public class SubscriberConfig {
   public PubSubInboundChannelAdapter pubSubInboundChannelAdapter(
     PubSubTemplate pubSubTemplate
   ) {
-    final var adapter = new PubSubInboundChannelAdapter(pubSubTemplate, "test_subscription");
+    final var adapter = new PubSubInboundChannelAdapter(pubSubTemplate, "projects/local-project/subscriptions/local-subscription");
     adapter.setOutputChannel(messageChannel());
     adapter.setPayloadType(MessageDto.class);
 

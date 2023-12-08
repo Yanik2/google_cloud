@@ -63,7 +63,7 @@ public class PublisherController {
     final var message = new MessageDto<ParserDto>(parser, "metadata");
     message.setType("parser");
     //returns CompletableFuture
-    pubSubTemplate.publish("test_topic", message);
+    pubSubTemplate.publish("projects/local-project/topics/local-topic", message);
     return "ok";
   }
 }
